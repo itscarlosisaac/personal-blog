@@ -7,6 +7,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # ← fixes exit code 128 (git push permission denied)
 
     steps:
       - name: Checkout
@@ -15,12 +17,17 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: 22   # ← fixes Node 20 deprecation warning
+          cache: pnpm        # ← change to npm if you're not using pnpm
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
 
       - name: Install & Build
         run: |
-          npm ci
+          npm install
           npm run build
 
       - name: Deploy to GitHub Pages
