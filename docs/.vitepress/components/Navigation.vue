@@ -68,8 +68,7 @@
 import Logo from './Logo.vue'
 import { ref, reactive, computed } from 'vue'
 import { useData } from 'vitepress'
-const { theme, page } = useData()
-
+const { theme } = useData()
 
 // ── Sidebar projects ──────────────────────────────────────────────
 const projects = computed(() =>

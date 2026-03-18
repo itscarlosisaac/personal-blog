@@ -1,5 +1,5 @@
 import { readdirSync, statSync } from "fs";
-import { join, resolve } from "path";
+import { join } from "path";
 import { DefaultTheme } from "vitepress";
 
 function toTitle(str) {
@@ -9,40 +9,57 @@ function toTitle(str) {
         .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
+function toSlug(str: string): string {
+    return str.toLowerCase().replace(/\s+/g, "-");
+}
+
 export function generatedSidebarNavigation() {
-    const sidebar: DefaultTheme.Sidebar = []
-    const projects = 'docs/projects'
-    const src = join( process.cwd(), projects)
-    
-    let folders;
+    const sidebar: DefaultTheme.Sidebar = [];
+    const projects = "docs/projects";
+    const src = join(process.cwd(), projects);
 
     try {
-        folders = readdirSync(src)
-    
-        folders.forEach(folder => {
-            const files = readdirSync(join(src, folder))
+        if (!statSync(src).isDirectory()) return [];
 
-            let items = files.map(file => {
-                let link = file === 'index.md' ?
-                    `/projects/${folder}/index.html` :
-                    `/projects/${folder}/${file.replace('.md', '.html')}`
+        const folders = readdirSync(src).filter((f) => {
+            const full = join(src, f);
+            return statSync(full).isDirectory(); // only directories, skip index.md
+        });
+
+        folders.forEach((folder) => {
+            const folderPath = join(src, folder); // ← Bug 1 fix
+            const slug = toSlug(folder); // ← Bug 3 fix
+
+            const files = readdirSync(folderPath)
+                .filter((f) => f.endsWith(".md"));
+
+            const items = files.map((file) => {
+                const isIndex = file === "index.md";
+                const link = isIndex
+                    ? `/projects/${slug}/` // ← Bug 2 fix
+                    : `/projects/${slug}/${file.replace(".md", "")}`;
 
                 return {
-                    text: file === 'index.md' ? "Overview" : toTitle(file),
-                    link
-                }
-            })
+                    text: isIndex ? "Overview" : toTitle(file),
+                    link,
+                };
+            });
 
-            console.log(items)
+            // Put index/Overview first
+            items.sort((a, b) => {
+                if (a.text === "Overview") return -1;
+                if (b.text === "Overview") return 1;
+                return a.text.localeCompare(b.text);
+            });
+
             sidebar.push({
-                text: folder,
+                text: toTitle(folder),
                 items,
-            })
-        })
-    }
-    catch(e) {
-        console.log(e)
-        return []
+            });
+        });
+    } catch (e) {
+        console.log("[sidebar] Error:", e)
+        return [];
     }
 
     return sidebar;
