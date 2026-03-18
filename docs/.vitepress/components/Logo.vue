@@ -1,5 +1,5 @@
 <template>
-    <a href="/" class="logo" :class="{ collapsed }">
+    <a :href="withBase('/')" class="logo" :class="{ collapsed }">
       <svg class="logo-icon" viewBox="0 0 38 28" xmlns="http://www.w3.org/2000/svg">
         <!-- Base trace — dim, drawn first so resistor sits on top -->
         <line
@@ -33,6 +33,7 @@
   </template>
   
   <script setup lang="ts">
+  import { withBase } from 'vitepress'
   defineProps<{
     collapsed?: boolean
   }>()

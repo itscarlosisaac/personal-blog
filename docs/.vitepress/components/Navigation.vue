@@ -50,7 +50,7 @@
           <!-- Pages inside folder -->
           <Transition name="folder-slide">
             <div v-if="openFolders.has(project.name) && !collapsed" class="folder-pages">
-              <a v-for="page in project.pages" :key="page.path" :href="page.path" class="page-link"
+              <a v-for="page in project.pages" :key="page.path" :href="withBase('/page.path')" class="page-link"
                 :class="{ active: currentPath === page.path }">
                 <span class="page-dot"></span>
                 {{ page.title }}
@@ -66,6 +66,7 @@
 
 <script setup>
 import Logo from './Logo.vue'
+import { withBase } from 'vitepress'
 import { ref, reactive, computed } from 'vue'
 import { useData } from 'vitepress'
 const { theme } = useData()
