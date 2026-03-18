@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22   # ← fixes Node 20 deprecation warning
+          node-version: 24
 
 
       - name: Install & Build
