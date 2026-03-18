@@ -66,9 +66,8 @@
 
 <script setup>
 import Logo from './Logo.vue'
-import { withBase } from 'vitepress'
 import { ref, reactive, computed } from 'vue'
-import { useData } from 'vitepress'
+import { useData, withBase } from 'vitepress'
 const { theme } = useData()
 
 // ── Sidebar projects ──────────────────────────────────────────────

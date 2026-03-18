@@ -1,5 +1,5 @@
 <template>
-  <a :href="post.url" class="post-card">
+  <a :href="withBase(post.url)" class="post-card">
 
     <!-- Image placeholder -->
     <div class="card-image"></div>
@@ -33,6 +33,7 @@
 </template>
 
 <script setup lang="ts">
+import { withBase } from 'vitepress'
 import { computed } from 'vue'
 
 const props = defineProps<{
