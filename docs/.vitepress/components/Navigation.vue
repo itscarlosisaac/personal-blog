@@ -50,7 +50,7 @@
           <!-- Pages inside folder -->
           <Transition name="folder-slide">
             <div v-if="openFolders.has(project.name) && !collapsed" class="folder-pages">
-              <a v-for="page in project.pages" :key="page.path" :href="withBase('/page.path')" class="page-link"
+              <a v-for="page in project.pages" :key="page.path" :href="withBase(page.path)" class="page-link"
                 :class="{ active: currentPath === page.path }">
                 <span class="page-dot"></span>
                 {{ page.title }}
