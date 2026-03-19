@@ -94,7 +94,7 @@ The flat side of the LED is the cathode (negative). The longer leg is the anode 
 
 ## What's Next
 
-Once you're comfortable with a breadboard and basic components, you're ready to add a microcontroller. The ESP32 is my recommendation — it's got enough power to do interesting things, and the community is huge. The next post covers [working with resistors](/posts/working-with-resistors) specifically, since they show up in literally every circuit you'll ever build.
+Once you're comfortable with a breadboard and basic components, you're ready to add a microcontroller. The ESP32 is my recommendation — it's got enough power to do interesting things, and the community is huge.
 
 ---
 

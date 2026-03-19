@@ -5,6 +5,7 @@ export default defineConfig({
   base: '/personal-blog/',
   title: "Personal Electronics Blog",
   description: "Just playing around.",
+  ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
