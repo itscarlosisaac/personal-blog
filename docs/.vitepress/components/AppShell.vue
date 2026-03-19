@@ -72,7 +72,7 @@ import Navigation from './Navigation.vue'
 
 .main-inner :deep(.content pre code) {
   background: none; border: none; padding: 0;
-  color: #d4d4d8; font-size: 13px; line-height: 1.65;
+  color: #d4d4d8; font-size: 13px; line-height: 0;
 }
 
 .main-inner :deep(.content blockquote) {

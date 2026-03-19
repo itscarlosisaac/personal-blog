@@ -1,66 +1,99 @@
 /* ═══════════════════════════════════════════════════════════════
-   CODE BLOCKS — ByteTrace theme
-   Target: div.language-* > pre.vp-code (VitePress + Shiki)
+   CODE BLOCKS — VS Code style chrome
+   VitePress + Shiki with one-dark-pro / light-plus themes
 ═══════════════════════════════════════════════════════════════ */
 
 /* ── Wrapper ── */
 div[class*="language-"] {
   position: relative;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  margin: 20px 0;
-  background: rgba(9, 14, 33, 0.74);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin: 24px 0;
+  background: #1e1e1e; /* VS Code exact background */
+  border: 1px solid #2d2d2d;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04) inset,
+    0 8px 32px rgba(0,0,0,0.18);
 }
 
-/* ── Language label (top right) ── */
-div[class*="language-"] > span.lang {
+/* ── Title bar — mimics VS Code tab chrome ── */
+div[class*="language-"]::before {
+  content: '';
+  display: flex;
+  align-items: center;
+  height: 36px;
+  background: #2d2d2d;
+  border-bottom: 1px solid #1e1e1e;
+}
+
+/* ── Window dots (red / yellow / green) ── */
+div[class*="language-"]::after {
+  content: '';
   position: absolute;
-  top: 10px;
-  right: 44px;            /* sits left of the copy button */
-  font-family: 'Fragment Mono', 'DM Mono', monospace;
-  font-size: 10px;
-  font-weight: 500;
-  color: #3f3f46;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  line-height: 1;
+  top: 12px;
+  left: 14px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff5f57;
+  box-shadow:
+    18px 0 0 #febc2e,
+    36px 0 0 #28c840;
   pointer-events: none;
   z-index: 10;
 }
 
+/* ── Language label — sits in the title bar ── */
+div[class*="language-"] > span.lang {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fragment Mono', 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b6b6b;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  pointer-events: none;
+  z-index: 9;
+}
 
 /* ── Pre + code ── */
 div[class*="language-"] > pre.vp-code {
   margin: 0;
-  padding: 18px 20px;
+  padding: 16px 20px;
   overflow-x: auto;
   background: transparent !important;
-  font-family: 'Fragment Mono', 'DM Mono', 'JetBrains Mono', monospace;
+  font-family: 'Fragment Mono', 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 13px;
   line-height: 1.7;
   tab-size: 2;
 }
 
 div[class*="language-"] > pre.vp-code code {
+  color: var(--shiki-dark, #d4d4d8);
   font-family: inherit;
   font-size: inherit;
   background: none !important;
   border: none !important;
   padding: 0 !important;
-  color: #d4d4d8;
   display: block;
 }
 
-/* ── Shiki line spans ── */
+/* ── Shiki line ── */
 div[class*="language-"] .line {
   display: block;
   min-height: 1.7em;
 }
 
-/* Highlighted line */
+/* ── Highlighted line ── */
 div[class*="language-"] .line.highlighted {
-  background: rgba(239, 159, 39, 0.08);
+  background: rgba(255, 255, 255, 0.05);
   border-left: 2px solid #EF9F27;
   margin-left: -20px;
   padding-left: 18px;
@@ -68,34 +101,25 @@ div[class*="language-"] .line.highlighted {
   padding-right: 20px;
 }
 
-/* ── Scrollbar inside code ── */
-div[class*="language-"] > pre.vp-code::-webkit-scrollbar {
-  height: 4px;
-}
-div[class*="language-"] > pre.vp-code::-webkit-scrollbar-track {
-  background: transparent;
-}
-div[class*="language-"] > pre.vp-code::-webkit-scrollbar-thumb {
-  background: #3f3f46;
-  border-radius: 4px;
-}
-div[class*="language-"] > pre.vp-code::-webkit-scrollbar-thumb:hover {
-  background: #52525b;
-}
+/* ── Scrollbar ── */
+div[class*="language-"] > pre.vp-code::-webkit-scrollbar       { height: 4px; }
+div[class*="language-"] > pre.vp-code::-webkit-scrollbar-track  { background: transparent; }
+div[class*="language-"] > pre.vp-code::-webkit-scrollbar-thumb  { background: #404040; border-radius: 4px; }
+div[class*="language-"] > pre.vp-code::-webkit-scrollbar-thumb:hover { background: #555; }
 
 /* ── Copy button ── */
 div[class*="language-"] > button.copy {
   position: absolute;
-  top: 10px;
+  top: 6px;
   right: 10px;
-  z-index: 10;
+  z-index: 20;
   width: auto !important;
-  height: auto !important;
-  padding: 4px 10px;
+  height: 24px !important;
+  padding: 0 10px;
   background: transparent !important;
-  border: 1px solid #3f3f46 !important;
-  border-radius: 6px;
-  color: #3f3f46;
+  border: 1px solid transparent !important;
+  border-radius: 5px;
+  color: #555 !important;
   font-family: 'Fragment Mono', 'DM Mono', monospace;
   font-size: 10px;
   font-weight: 500;
@@ -106,29 +130,15 @@ div[class*="language-"] > button.copy {
   background-image: none !important;
 }
 
-div[class*="language-"]:hover > button.copy {
-  opacity: 1 !important;
-}
+div[class*="language-"]:hover > button.copy      { opacity: 1 !important; }
+div[class*="language-"] > button.copy:hover       { background: rgba(255,255,255,0.07) !important; border-color: #404040 !important; color: #999 !important; }
+div[class*="language-"] > button.copy.copied      { background: rgba(29,158,117,0.15) !important; border-color: rgba(29,158,117,0.4) !important; color: #1D9E75 !important; opacity: 1 !important; }
 
-div[class*="language-"] > button.copy:hover {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border-color: #52525b !important;
-  color: #a1a1aa;
-}
+div[class*="language-"] > button.copy::before          { content: 'copy'; }
+div[class*="language-"] > button.copy.copied::before   { content: 'copied!'; }
+div[class*="language-"] > button.copy > span           { display: none; }
 
-div[class*="language-"] > button.copy.copied {
-  background: rgba(29, 158, 117, 0.12) !important;
-  border-color: rgba(29, 158, 117, 0.5) !important;
-  color: #1D9E75;
-  opacity: 1 !important;
-}
-
-/* Text via ::before, hide default SVG */
-div[class*="language-"] > button.copy::before        { content: 'copy'; }
-div[class*="language-"] > button.copy.copied::before { content: 'copied!'; }
-div[class*="language-"] > button.copy > span         { display: none; }
-
-/* ── Inline code (not in a block) ── */
+/* ── Inline code ── */
 :not(pre) > code {
   font-family: 'Fragment Mono', 'DM Mono', monospace;
   font-size: 0.85em;
@@ -139,56 +149,80 @@ div[class*="language-"] > button.copy > span         { display: none; }
   border-radius: 5px;
 }
 
-/* ── Code group tabs (when multiple langs shown) ── */
+/* ═══════════════════════════════════════════════════════════════
+   LANGUAGE-SPECIFIC TAB COLOR
+   Changes the center label color per language
+═══════════════════════════════════════════════════════════════ */
+
+/* C++ — blue */
+div.language-cpp > span.lang { color: #569cd6; }
+
+/* Python — yellow */
+div.language-python > span.lang,
+div.language-py > span.lang  { color: #e5c07b; }
+
+/* Vue — green */
+div.language-vue > span.lang { color: #42b883; }
+
+/* TypeScript — blue */
+div.language-typescript > span.lang,
+div.language-ts > span.lang  { color: #3178c6; }
+
+/* Bash — amber */
+div.language-bash > span.lang,
+div.language-sh > span.lang,
+div.language-shell > span.lang { color: #EF9F27; }
+
+/* Plain text / no lang */
+div.language-text > span.lang,
+div.language- > span.lang { color: #555; }
+
+/* ═══════════════════════════════════════════════════════════════
+   CODE GROUP TABS
+═══════════════════════════════════════════════════════════════ */
 .vp-code-group {
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #2a2a2e;
-  margin: 20px 0;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #2d2d2d;
+  margin: 24px 0;
 }
 
 .vp-code-group .tabs {
   display: flex;
-  background: #1a1a1f;
-  border-bottom: 1px solid #2a2a2e;
+  background: #2d2d2d;
+  border-bottom: 1px solid #1e1e1e;
   padding: 0 12px;
-  gap: 0;
 }
 
-.vp-code-group .tabs input[type="radio"] {
-  display: none;
-}
+.vp-code-group .tabs input[type="radio"] { display: none; }
 
 .vp-code-group .tabs label {
-  padding: 10px 14px;
+  padding: 8px 14px;
   font-family: 'Fragment Mono', 'DM Mono', monospace;
   font-size: 11px;
-  color: #3f3f46;
+  color: #6b6b6b;
   cursor: pointer;
   border-bottom: 2px solid transparent;
   transition: color 0.15s, border-color 0.15s;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   margin-bottom: -1px;
 }
+.vp-code-group .tabs label:hover                  { color: #aaa; }
+.vp-code-group .tabs input:checked + label        { color: #d4d4d4; border-bottom-color: #EF9F27; }
 
-.vp-code-group .tabs label:hover {
-  color: #a1a1aa;
+.vp-code-group div[class*="language-"]            { border-radius: 0; border: none; box-shadow: none; margin: 0; }
+.vp-code-group div[class*="language-"]::before,
+.vp-code-group div[class*="language-"]::after     { display: none; }
+
+/* ═══════════════════════════════════════════════════════════════
+   SHIKI TOKEN COLORS
+   VitePress dual-theme injects --shiki-light / --shiki-dark
+   as inline CSS vars on each <span>. These rules activate them.
+═══════════════════════════════════════════════════════════════ */
+.vp-code span {
+  color: var(--shiki-dark, inherit);
 }
 
-.vp-code-group .tabs input:checked + label {
-  color: #EF9F27;
-  border-bottom-color: #EF9F27;
-}
-
-/* Remove double border inside code groups */
-.vp-code-group div[class*="language-"] {
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-  margin: 0;
-}
-
-.vp-code-group div[class*="language-"]::before {
-  display: none;
+html:not(.dark) .vp-code span {
+  color: var(--shiki-light, inherit);
 }

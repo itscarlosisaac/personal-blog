@@ -6,6 +6,13 @@ export default defineConfig({
   title: "Personal Electronics Blog",
   description: "Just playing around.",
   ignoreDeadLinks: true,
+  markdown: {
+    theme: {
+      dark: 'tokyo-night',   light: 'tokyo-night'
+    },
+    config: (md) => {
+    }
+  },
   head: [
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
