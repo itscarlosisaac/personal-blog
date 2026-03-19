@@ -12,9 +12,6 @@
         {{ tag }}
       </button>
 
-      <div class="search-box">
-        <input v-model="search" type="text" placeholder="Search articles..." />
-      </div>
     </div>
 
     <!-- ── Posts grid (flat like design) ───────── -->

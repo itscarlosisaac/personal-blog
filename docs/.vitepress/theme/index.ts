@@ -1,3 +1,5 @@
+import './style.css'
+import './code-blocks.css'
 import type { Theme } from "vitepress";
 
 // You can directly import Vue files in the theme entry

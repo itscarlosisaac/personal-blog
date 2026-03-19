@@ -1,0 +1,78 @@
+/* ── Code block copy button ───────────────────────────────────────
+   Override VitePress defaults to match ByteTrace design
+*/
+
+/* Hide the default ugly button, show only on hover of the block */
+.vp-code-group .vp-copy-code-button,
+div[class*="language-"] > button.copy {
+  /* Reset defaults */
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #71717a;
+  cursor: pointer;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  opacity: 0;
+  padding: 5px 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  z-index: 10;
+
+  /* Remove default icon — show text instead */
+  background-image: none !important;
+  width: auto;
+  height: auto;
+}
+
+/* Show on hover of the code block */
+div[class*="language-"]:hover > button.copy {
+  opacity: 1;
+}
+
+/* Hover state on the button itself */
+div[class*="language-"] > button.copy:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #e4e4e7;
+}
+
+/* Copied state */
+div[class*="language-"] > button.copy.copied,
+div[class*="language-"] > button.copy:active {
+  background: rgba(29, 158, 117, 0.15);
+  border-color: rgba(29, 158, 117, 0.4);
+  color: #1D9E75;
+  opacity: 1;
+}
+
+/* Replace icon with text label using ::after */
+div[class*="language-"] > button.copy::before {
+  content: 'copy';
+}
+
+div[class*="language-"] > button.copy.copied::before {
+  content: 'copied!';
+}
+
+/* Hide the default SVG icon VitePress injects */
+div[class*="language-"] > button.copy > span {
+  display: none;
+}
+
+/* ── Markdown image utility classes ── */
+.content img.full-width  { width: 100%; height: auto; }
+.content img.centered    { display: block; margin: 0 auto; }
+.content img.rounded     { border-radius: 12px; }
+.content img.shadow      { box-shadow: 0 4px 24px rgba(0,0,0,0.1); }
+.content img.border      { border: 1px solid #f0f0ef; border-radius: 8px; }
+
+/* Sizes */
+.content img.sm  { max-width: 300px; }
+.content img.md  { max-width: 500px; }
+.content img.lg  { max-width: 700px; }

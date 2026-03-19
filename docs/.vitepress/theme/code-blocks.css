@@ -1,0 +1,194 @@
+/* ═══════════════════════════════════════════════════════════════
+   CODE BLOCKS — ByteTrace theme
+   Target: div.language-* > pre.vp-code (VitePress + Shiki)
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Wrapper ── */
+div[class*="language-"] {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 20px 0;
+  background: rgba(9, 14, 33, 0.74);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Language label (top right) ── */
+div[class*="language-"] > span.lang {
+  position: absolute;
+  top: 10px;
+  right: 44px;            /* sits left of the copy button */
+  font-family: 'Fragment Mono', 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: #3f3f46;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 10;
+}
+
+
+/* ── Pre + code ── */
+div[class*="language-"] > pre.vp-code {
+  margin: 0;
+  padding: 18px 20px;
+  overflow-x: auto;
+  background: transparent !important;
+  font-family: 'Fragment Mono', 'DM Mono', 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  tab-size: 2;
+}
+
+div[class*="language-"] > pre.vp-code code {
+  font-family: inherit;
+  font-size: inherit;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  color: #d4d4d8;
+  display: block;
+}
+
+/* ── Shiki line spans ── */
+div[class*="language-"] .line {
+  display: block;
+  min-height: 1.7em;
+}
+
+/* Highlighted line */
+div[class*="language-"] .line.highlighted {
+  background: rgba(239, 159, 39, 0.08);
+  border-left: 2px solid #EF9F27;
+  margin-left: -20px;
+  padding-left: 18px;
+  margin-right: -20px;
+  padding-right: 20px;
+}
+
+/* ── Scrollbar inside code ── */
+div[class*="language-"] > pre.vp-code::-webkit-scrollbar {
+  height: 4px;
+}
+div[class*="language-"] > pre.vp-code::-webkit-scrollbar-track {
+  background: transparent;
+}
+div[class*="language-"] > pre.vp-code::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 4px;
+}
+div[class*="language-"] > pre.vp-code::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+/* ── Copy button ── */
+div[class*="language-"] > button.copy {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  width: auto !important;
+  height: auto !important;
+  padding: 4px 10px;
+  background: transparent !important;
+  border: 1px solid #3f3f46 !important;
+  border-radius: 6px;
+  color: #3f3f46;
+  font-family: 'Fragment Mono', 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  opacity: 0 !important;
+  transition: opacity 0.15s, background 0.15s, border-color 0.15s, color 0.15s;
+  background-image: none !important;
+}
+
+div[class*="language-"]:hover > button.copy {
+  opacity: 1 !important;
+}
+
+div[class*="language-"] > button.copy:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: #52525b !important;
+  color: #a1a1aa;
+}
+
+div[class*="language-"] > button.copy.copied {
+  background: rgba(29, 158, 117, 0.12) !important;
+  border-color: rgba(29, 158, 117, 0.5) !important;
+  color: #1D9E75;
+  opacity: 1 !important;
+}
+
+/* Text via ::before, hide default SVG */
+div[class*="language-"] > button.copy::before        { content: 'copy'; }
+div[class*="language-"] > button.copy.copied::before { content: 'copied!'; }
+div[class*="language-"] > button.copy > span         { display: none; }
+
+/* ── Inline code (not in a block) ── */
+:not(pre) > code {
+  font-family: 'Fragment Mono', 'DM Mono', monospace;
+  font-size: 0.85em;
+  background: #f4f4f5;
+  border: 1px solid #e4e4e7;
+  color: #18181b;
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+/* ── Code group tabs (when multiple langs shown) ── */
+.vp-code-group {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #2a2a2e;
+  margin: 20px 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.vp-code-group .tabs {
+  display: flex;
+  background: #1a1a1f;
+  border-bottom: 1px solid #2a2a2e;
+  padding: 0 12px;
+  gap: 0;
+}
+
+.vp-code-group .tabs input[type="radio"] {
+  display: none;
+}
+
+.vp-code-group .tabs label {
+  padding: 10px 14px;
+  font-family: 'Fragment Mono', 'DM Mono', monospace;
+  font-size: 11px;
+  color: #3f3f46;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  letter-spacing: 0.03em;
+  margin-bottom: -1px;
+}
+
+.vp-code-group .tabs label:hover {
+  color: #a1a1aa;
+}
+
+.vp-code-group .tabs input:checked + label {
+  color: #EF9F27;
+  border-bottom-color: #EF9F27;
+}
+
+/* Remove double border inside code groups */
+.vp-code-group div[class*="language-"] {
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+}
+
+.vp-code-group div[class*="language-"]::before {
+  display: none;
+}
