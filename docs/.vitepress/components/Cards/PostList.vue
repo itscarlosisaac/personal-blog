@@ -1,17 +1,6 @@
 <template>
   <div class="post-list">
 
-    <!-- ── Hero / Search ───────────────────────── -->
-    <div class="search-hero">
-      <div class="search-inner">
-        <h1 class="hero-title">Blog</h1>
-
-        <div class="search-box">
-          <input v-model="search" type="text" placeholder="Search articles..." />
-        </div>
-      </div>
-    </div>
-
     <!-- ── Tag filters ───────────────────────── -->
     <div class="tag-bar" v-if="allTags.length">
       <button class="tag-btn" :class="{ active: activeTag === null }" @click="activeTag = null">
@@ -22,6 +11,10 @@
         @click="activeTag = activeTag === tag ? null : tag">
         {{ tag }}
       </button>
+
+      <div class="search-box">
+        <input v-model="search" type="text" placeholder="Search articles..." />
+      </div>
     </div>
 
     <!-- ── Posts grid (flat like design) ───────── -->
@@ -134,6 +127,13 @@ const resetFilters = () => {
   font-size: 28px;
   font-weight: 700;
   margin: 0;
+}
+
+
+.search-box {
+  flex-grow: 2;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .search-box input {
