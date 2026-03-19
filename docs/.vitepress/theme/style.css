@@ -65,6 +65,12 @@ div[class*="language-"] > button.copy > span {
   display: none;
 }
 
+@media (max-width: 768px) {
+  .content img {
+    width: 100%;
+  }
+}
+
 /* ── Markdown image utility classes ── */
 .content img.full-width  { width: 100%; height: auto; }
 .content img.centered    { display: block; margin: 0 auto; }
