@@ -32,7 +32,7 @@ defineProps<{
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM Sans:wght@300;800&display=swap');
 
 .logo {
   display: flex;
@@ -53,7 +53,7 @@ defineProps<{
 }
 
 .logo-text {
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 22px;
   letter-spacing: -0.01em;
   line-height: 1;

@@ -78,7 +78,7 @@ const cleanExcerpt = computed(() => {
   text-decoration: none;
   text-decoration-line: none;
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-  font-family: 'Urbanist', system-ui, sans-serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
 }
 
 .post-card:hover {
@@ -102,7 +102,7 @@ const cleanExcerpt = computed(() => {
 }
 
 .card-category {
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -125,7 +125,7 @@ const cleanExcerpt = computed(() => {
 
 /* ── Title — Fraunces italic, matching the Hero quote font ── */
 .card-title {
-  font-family: 'Urbanist', system-ui, sans-serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-weight: 700;
   font-size: 17px;
   line-height: 1.3;
@@ -137,7 +137,7 @@ const cleanExcerpt = computed(() => {
 
 /* ── Excerpt ── */
 .card-excerpt {
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   font-size: 13px;
   line-height: 1.6;
@@ -160,7 +160,7 @@ const cleanExcerpt = computed(() => {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 11.5px;
   color: #a1a1aa;
 }

@@ -49,7 +49,7 @@ const currentQuote = ref(quotes[Math.floor(Math.random() * quotes.length)])
   border-radius: 16px;
   overflow: hidden;
   background: #fafaf9;
-  font-family: 'Urbanist', system-ui, sans-serif;
+  font-family: "DM Sans", system-ui, sans-serif
 }
 
 /* ── Blobs ── */
@@ -92,7 +92,7 @@ const currentQuote = ref(quotes[Math.floor(Math.random() * quotes.length)])
 
 /* ── Eyebrow ── */
 .eyebrow {
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 800;
   font-size: 11px;
   letter-spacing: 0.14em;
@@ -103,12 +103,12 @@ const currentQuote = ref(quotes[Math.floor(Math.random() * quotes.length)])
 
 /* ── Quote headline ── */
 .quote-headline {
-  font-family: 'Fraunces', serif;
+  font-family:  "Playfair", serif;
   font-style: italic;
-  font-weight: 900;
+  font-weight: 500;
   font-size: clamp(28px, 4vw, 48px);
   line-height: 1.3;
-  letter-spacing: -0.02em;
+  letter-spacing: -2px;
   color: #18181b;
   margin: 0 0 20px;
   max-width: 680px;

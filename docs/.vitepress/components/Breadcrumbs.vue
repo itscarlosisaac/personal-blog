@@ -32,6 +32,7 @@
   import { useRoute, useData } from 'vitepress'
   
   const route  = useRoute()
+  console.log(route)
   const { theme } = useData()
   
   // ── Build crumbs from current URL path ───────────────────────────

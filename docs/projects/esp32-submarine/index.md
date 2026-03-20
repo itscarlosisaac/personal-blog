@@ -5,6 +5,8 @@ date: 2025-03-01
 author: Carlos Isaac
 category: ESP32
 tags: [esp32, platformio, vscode, macos, setup]
+icon: 'lni lni-books-2'
+status: 'done'
 ---
 
 # Getting Started with ESP32 on macOS

@@ -1,7 +1,10 @@
 ---
 title: All Projects
-category: ESP32
 layout: false
 ---
 
-# All Projects
+<script setup>
+import ProjectList from '../.vitepress/components/Projects/ProjectList.vue'
+</script>
+
+<ProjectList />
