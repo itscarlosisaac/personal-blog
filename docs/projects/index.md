@@ -1,5 +1,5 @@
 ---
-title: All Projects
+title: All Projects List
 layout: false
 ---
 
