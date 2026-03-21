@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 import { generatedSidebarNavigation } from "./utils/generate-navigation";
 
 export default defineConfig({
-  base: "/personal-blog/",
+  base: "/",
   title: "Personal Electronics Blog",
   description: "Just playing around.",
   ignoreDeadLinks: true,
